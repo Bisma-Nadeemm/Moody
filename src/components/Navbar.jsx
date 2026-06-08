@@ -27,11 +27,15 @@ export default function Navbar() {
   const { pathname } = useLocation();
   const isAuth = pathname === "/login" || pathname === "/signup";
 
+  function openChat() {
+    window.dispatchEvent(new Event("open-moody-chat"));
+  }
+
   if (isAuth) return null;
 
   return (
     <header className="sticky top-0 z-50 px-4 py-4 md:px-8">
-      <nav className="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 glow-blue-sm">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-white/90 bg-white/85 px-5 py-3 shadow-sm backdrop-blur-xl">
         <Link to="/home" className="flex items-center gap-2.5 group">
           <LogoMark />
           <span className="font-display text-xl font-bold tracking-tight text-gradient">
@@ -51,9 +55,16 @@ export default function Navbar() {
           >
             Mood
           </Link>
+          <button
+            type="button"
+            onClick={openChat}
+            className="rounded-xl px-4 py-2 text-sm font-medium text-moody-700 transition hover:bg-moody-100/60"
+          >
+            Chat
+          </button>
           <Link
             to="/login"
-            className="rounded-xl px-4 py-2 text-sm font-medium text-moody-600 transition hover:bg-white/50"
+            className="rounded-xl px-4 py-2 text-sm font-medium text-moody-600 transition hover:bg-moody-50"
           >
             Log out
           </Link>

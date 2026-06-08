@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MoodProvider } from "./context/MoodContext";
 import Navbar from "./components/Navbar";
+import MoodyChatbot from "./components/MoodyChatbot";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
@@ -9,9 +10,10 @@ import MoodResultPage from "./pages/MoodResultPage";
 
 function AppLayout({ children }) {
   return (
-    <div className="min-h-svh bg-mesh">
+    <div className="dreamscape min-h-svh bg-mesh">
       <Navbar />
       {children}
+      <MoodyChatbot />
     </div>
   );
 }

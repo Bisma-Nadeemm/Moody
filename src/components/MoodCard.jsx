@@ -1,4 +1,4 @@
-export default function MoodCard({ mood, selected, onSelect }) {
+export default function MoodCard({ mood, selected = false, onSelect }) {
   const { Icon, label, description, gradient } = mood;
 
   return (
@@ -8,7 +8,7 @@ export default function MoodCard({ mood, selected, onSelect }) {
       className={`
         group relative flex flex-col items-center gap-4 rounded-3xl p-6 text-center
         transition-all duration-300 ease-out
-        glass hover:scale-[1.04] hover:glow-blue
+        border border-white/90 bg-white/75 shadow-sm hover:-translate-y-1 hover:bg-white hover:shadow-xl
         bg-gradient-to-br ${gradient}
         ${selected ? "ring-2 ring-moody-500 scale-[1.03] glow-blue" : ""}
       `}
@@ -16,15 +16,15 @@ export default function MoodCard({ mood, selected, onSelect }) {
       <div
         className="
           flex h-20 w-20 items-center justify-center rounded-2xl
-          bg-white/30 backdrop-blur-md transition-transform duration-300
-          group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(91,143,255,0.5)]
+          bg-white/80 backdrop-blur-md shadow-sm transition-transform duration-300
+          group-hover:scale-105
         "
       >
         <Icon size={64} className="drop-shadow-lg" />
       </div>
       <div>
         <h3 className="font-display text-lg font-semibold text-moody-900">{label}</h3>
-        <p className="mt-1 text-sm text-moody-700/80">{description}</p>
+        <p className="mt-1 text-sm leading-6 text-moody-700/80">{description}</p>
       </div>
       <span
         className="
